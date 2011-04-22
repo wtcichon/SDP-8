@@ -1,0 +1,10 @@
+Primary.java is main class for robot
+Robot controller is tester which sends commands to robot
+
+Robot structure
+ Primary      : main method, launcher
+ BTReader     : reads commands from BT and adds them to queue
+ BTSender     : sends current state of robot to PC
+ SensorThread : takes control over robot if sensors are activated
+ RobotThread  : executes commands from queue
+ PilotWrapper : holds instances of objects used in many classes  

@@ -1,0 +1,459 @@
+	
+
+import java.io.*;
+
+import lejos.nxt.LCD;
+import lejos.nxt.Motor;
+import lejos.nxt.comm.BTConnection;
+import lejos.nxt.comm.Bluetooth;
+import lejos.robotics.navigation.*;
+import lejos.nxt.*;
+
+
+/*
+ * Class to reside on the robot.  Will open up a connection
+ * with the PC, using 'RobotController' on the other side.
+ * 
+ * @author SDP Team 8
+ * @version 0.2
+ */
+public class RobotThread extends Thread {
+	
+	public int usX;
+	public int usY;
+	public int usAngle;
+	public int themX;
+	public int themY;
+	public int ballX;
+	public int ballY;
+	
+	public int ourGoalX;
+	public int theirGoalX;
+	
+	public String startingSide = "left";
+	public String stripColour = "blue";
+	
+	public int nextInt;
+	
+	public DataInputStream dataInStr;
+	public DataOutputStream dataOutStr;
+	public BTConnection conn;
+	
+	public Pilot pt;
+	public SimpleNavigator pilot;
+
+	public DataExchange DEObj;
+	
+	public int moveSpeed = 50;
+	public int turnSpeed = 100;
+
+	public boolean run = false;
+	
+	public RobotThread(DataExchange de) {
+
+		DEObj = de;
+	
+		LCD.setAutoRefresh(1);
+	
+		// We need to refine these measurements.
+		pt = new TachoPilot(14f, 13f, Motor.C, Motor.B);	
+		pilot = new SimpleNavigator (pt);		
+		
+		
+		LCD.clear();
+		LCD.drawString("Making conn...", 0, 2);
+		
+		conn = Bluetooth.waitForConnection();
+		
+		if (conn == null) {
+			LCD.clear();
+			LCD.drawString("Program crash in 5 secs", 0, 2);
+			LCD.drawString("Error 1 - no connection", 1, 2);
+			//Thread.sleep(5000);		
+		}
+		
+		LCD.clear();
+		LCD.drawString("Conn made...", 0, 2);
+		dataInStr = conn.openDataInputStream();
+		dataOutStr = conn.openDataOutputStream();
+		
+		if ((dataInStr == null) || (dataOutStr == null)) {
+			LCD.clear();
+			LCD.drawString("Program crash in 5 secs", 0, 2);
+			LCD.drawString("Error 2 - no data streams", 1, 2);
+			//Thread.sleep(5000);		
+		}
+		
+		Motor.A.setSpeed(900);
+		Motor.A.setPower(100);
+		
+		//pilot.setMoveSpeed(100);
+		pilot.setTurnSpeed(100);	
+	}
+	
+	public void run() {
+	
+		run = true;
+		
+		while (run) {
+
+			
+			if (DEObj.getCMD() == 0) {
+				LCD.clear();
+				LCD.drawString("Point 2", 0, 3);
+				try {
+					this.move();
+				} catch (IOException ioe) {
+					System.out.println(ioe);
+				}
+			}
+			else if (DEObj.getCMD() == 1) {
+				LCD.clear();
+				LCD.drawString("Point 3", 0, 3);
+				pilot.travel(-50);
+				pilot.rotate(90);
+				DEObj.setCMD(0);
+			}
+			else if (DEObj.getCMD() == 2) {
+				LCD.clear();
+				LCD.drawString("Point 4", 0, 3);
+				pilot.travel(50);
+				DEObj.setCMD(0);
+			}
+		}
+	}
+
+	public void move() throws IOException {
+
+		try {	
+			nextInt = dataInStr.readInt();
+			
+		} catch (IOException ioe) {
+			System.out.println(ioe);
+		}
+				
+		LCD.clear();
+		LCD.drawInt(nextInt, 0, 3);
+		//Thread.sleep(500);
+		String text = "";
+		text += nextInt;
+		boolean msgCorrectLength = false;			
+		String op = text.substring(0,3);
+		String value = text.substring(3);
+		int valint = Integer.parseInt(value);
+		LCD.clear();
+			
+		if (text.length() == 6) {
+			msgCorrectLength = true;
+		} else {
+			System.out.print("All message not rcvd");
+			msgCorrectLength = false;
+			commsDown();
+		}
+		
+		if (msgCorrectLength) {
+			LCD.clear();
+			LCD.drawString(text, 0, 2);
+			LCD.drawString("command rcvd", 0, 3);
+			if (text.equals("111111")) {
+				initRobot();
+				LCD.clear();
+				LCD.drawString("111111 loop done", 0, 3);
+				//Thread.sleep(1000);
+			}
+			else if (op.equals("121")) {
+				LCD.drawString("op = "+ op, 0, 3);
+				LCD.drawString("val = " + valint, 0, 4);
+				LCD.drawInt( valint, 0, 5);
+				//Thread.sleep(1000);
+				forward(valint);
+				LCD.clear();
+				LCD.drawString("ex = "+ op, 0, 3);
+				LCD.drawString("val = " + valint, 0, 4);
+				//Thread.sleep(1000);
+			}
+			else if (op.equals("123")) {
+				turn(valint);
+				LCD.clear();
+				LCD.drawString("op = "+ op, 0, 3);
+				LCD.drawString("val = " + valint, 0, 4);
+				//Thread.sleep(1000);
+			}
+			else if (op.equals("223")) {
+				turn(-valint);
+				LCD.clear();
+				LCD.drawString("op = "+ op, 0, 3);
+				LCD.drawString("val = " + valint, 0, 4);
+				//Thread.sleep(1000);
+			}
+			else if (op.equals("122")) {
+				reverse(valint);
+				LCD.clear();
+				LCD.drawString("op = "+ op, 0, 3);
+				LCD.drawString("val = " + valint, 0, 4);
+				//Thread.sleep(1000);
+			}
+			else if (text.equals("124000")) {
+				kick();
+				LCD.clear();
+				LCD.drawString("124000 loop done", 0, 3);
+				//Thread.sleep(1000);
+			}
+			else if (text.equals("133001")) {
+				setSide("left");
+				LCD.clear();
+				LCD.drawString("133001 loop done", 0, 3);
+				//Thread.sleep(1000);
+			}
+			else if (text.equals("133002")) {
+				setSide("right");
+				LCD.clear();
+				LCD.drawString("133002 loop done", 0, 3);
+				//Thread.sleep(1000);
+			}
+			else if (text.equals("144001")) {
+				setStrip("blue");
+				LCD.clear();
+				LCD.drawString("144001 loop done", 0, 3);
+				//Thread.sleep(1000);
+			}
+			else if (text.equals("144002")) {
+				setStrip("yellow");
+				LCD.clear();
+				LCD.drawString("144002 loop done", 0, 3);
+				//Thread.sleep(1000);
+			}
+			else if (text.equals("111666")) {
+				run = false;
+				LCD.clear();
+				LCD.drawString("111666 loop done", 0, 3);
+				//Thread.sleep(1000);
+			}
+			else if (text.equals("123456")) {
+				stop();
+				LCD.clear();
+				LCD.drawString("123456 loop done", 0, 3);
+			}
+			else if (text.equals("199999")) {
+				kill();
+			}
+			else if (text.equals("130208")) {
+				giveMax();
+			}
+			else if (op.equals("777")) {
+				setMovtSpeed(valint);
+				LCD.clear();
+				LCD.drawString("op = "+ op, 0, 3);
+				LCD.drawString("val = " + valint, 0, 4);
+			}
+			else if (op.equals("888")) {
+				setTurnSpeed(valint);
+				LCD.clear();
+				LCD.drawString("op = "+ op, 0, 3);
+				LCD.drawString("val = " + valint, 0, 4);
+			}
+				
+		} else {
+			kill();
+		}
+	}
+		
+		
+	
+	/**
+	 * Method to set up the start of a half.  Will be called
+	 * from a 'control panel' on the main PC before each half.
+	 * All coordinates are assumptions based on a pitch length
+	 * of 1000 px and width of 500px, bottom left as (0,0) and
+	 * top right as (1000,500).  This will need changed once we
+	 * have proper resolution from vision team.
+	 */
+	 public void initRobot () throws IOException {
+		usY = 250;
+		themY = 250;
+		ballX = 500;
+		ballY = 250;
+		if (startingSide.equals("left")) {
+			usX = 41;
+			usAngle = 0;
+			themX = 959;
+			ourGoalX = 0;
+			theirGoalX = 1000;
+			//sets initial position of the robot for position tracking
+			pilot.setPosition(41, 250, 0);
+		}
+		else {
+			usX = 959;
+			usAngle = 180;
+			themX = 41;
+			ourGoalX = 1000;
+			theirGoalX = 0;
+			//sets initial position of the robot for position tracking
+			pilot.setPosition(969, 250, 180);
+		}
+		LCD.clear();
+		LCD.drawString("init processed.", 0, 3);
+		//Thread.sleep(1000);
+	}
+	
+	/**
+	 * Method to execute when 'kick' instruction is received
+	 */
+	public void kick() throws IOException {
+		Motor.A.backward();
+		try {
+			Thread.sleep(130);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		Motor.A.forward();
+		try {
+			Thread.sleep(130);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		LCD.clear();
+		LCD.drawString("kick", 0, 3);
+		//Thread.sleep(1000);
+	}
+	 
+	/**
+	 * Method to execute when a 'turn xx' instruction is received
+	 */
+	public void turn(int degree) throws IOException {
+		pilot.rotate(degree, true);
+		LCD.clear();
+		LCD.drawString("Turning " + degree + " degrees",0,3);
+		
+		//LCD.drawString("Waiting for sensor", 0, 3);
+		// whilst the Pilot is moving (or thinks it is), the touch sensors are monitored
+		// for input.
+		/*if (degree > 20 || degree < -20) {
+			while (pilot.isMoving()) {
+				senseBothTouch();
+			}
+		}*/
+		/*usAngle += degree;
+		LCD.clear();
+		LCD.drawString("Heading = " + usAngle, 0, 1);
+		String head = Float.toString(pilot.getHeading());
+		LCD.drawString(head, 0, 3);
+		pilot.updatePosition();*/
+		//Thread.sleep(1000);
+	}
+	  
+	/**
+	 * Method to execute when the 'forward x' instruction is received
+	 */
+	public void forward(int measure) throws IOException {
+		LCD.clear();
+		LCD.drawString("Going forward " + measure,0,3);
+		pilot.travel(measure, true);
+	}
+	   
+	/**
+	 * Method to execute when the 'reverse x' instruction is received
+	 */
+	public void reverse(int measure) throws IOException {
+		LCD.clear();
+		LCD.drawString("Going backward " + measure,0,3);
+		pilot.travel(-measure, true);
+		//LCD.drawString("Waiting for sensor", 0, 3);
+		//while (pilot.isMoving() && (measure > 30 || measure < -30)) {
+		//	senseBackTouch();
+		//}
+		//pilot.updatePosition();
+		//Thread.sleep(1000);
+	}
+	   
+	public void setSide(String side) throws IOException {
+		LCD.clear();
+	   	LCD.drawString("Prev side: " + startingSide, 0, 3); 
+	   	//Thread.sleep(1000);
+	   	startingSide = side;
+	   	LCD.clear();
+	   	LCD.drawString("Set side now: " + startingSide, 0, 3);
+	   	//Thread.sleep(1000);
+	}
+	
+	public void setStrip(String colour) throws IOException {
+		LCD.clear();
+	   	LCD.drawString("Prev colour: ", 0, 3);
+	   	LCD.drawString(stripColour, 0, 4); 
+	   	//Thread.sleep(1000);
+	   	stripColour = colour;
+	   	LCD.clear();
+	   	LCD.drawString("Set colour now: ", 0, 3);
+	   	LCD.drawString(stripColour, 0, 4);
+	   	//Thread.sleep(1000);
+	}
+	
+	public void stop() throws IOException {
+		pilot.stop();
+		LCD.clear();
+		LCD.drawString("stop", 0, 3);
+		//Thread.sleep(1000);
+	}
+	   
+	public void kill() throws IOException {
+		pilot.stop();
+		run = false;
+		conn.close();
+		dataInStr.close();
+		dataOutStr.close();
+		LCD.clear();
+		System.exit(0);
+	}
+	
+	/**
+	 * This is a dummy and will be updated to define
+	 * default behaviour in BT breakdown eventually
+	 */
+	public void commsDown() throws IOException {
+		stop();
+	}
+	
+	/**
+	 * Setter for moveSpeed
+	 */
+	public void setMovtSpeed(int measure) {
+		moveSpeed = measure;
+	 	pilot.setMoveSpeed(moveSpeed);
+	}
+	 
+	/**
+	 * Setter for turnSpeed
+	 */
+	public void setTurnSpeed(int measure) {
+		turnSpeed = measure;
+	  	pilot.setTurnSpeed(turnSpeed);
+	}
+	  
+	/**
+	 * Getter for moveSpeed
+	 */
+	public int getMoveSpeed() {
+		return moveSpeed;
+	}
+	
+	/**
+	 * Getter for turnSpeed
+	 */
+	public int getTurnSpeed() {
+		return turnSpeed;
+	}
+	
+	public void giveMax() {
+		float mms = pt.getMoveMaxSpeed();
+		float tms = pt.getTurnMaxSpeed();
+		float cms = pt.getMoveSpeed();
+		float cts = pt.getTurnSpeed();
+		LCD.clear();
+		LCD.drawString("mms: " + mms, 0, 1);
+		LCD.drawString("tms: " + tms, 0, 2);
+		LCD.drawString("cms: " + cms, 0, 3);
+		LCD.drawString("cts: " + cts, 0, 4);
+	}
+	   	
+}
+

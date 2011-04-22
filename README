@@ -1,0 +1,6 @@
+This is group 8's project
+To run it, you need install:
+- bluez : bluetooth library
+- lubusb : library for usb
+- lejos framework 
+- v4l4j : video capture library for java

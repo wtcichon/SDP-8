@@ -1,0 +1,336 @@
+leJOS NXJ> Linking...
+Class 0: java.lang.Object
+Class 1: java.lang.Throwable
+Class 2: java.lang.Error
+Class 3: java.lang.OutOfMemoryError
+Class 4: boolean
+Class 5: char
+Class 6: float
+Class 7: double
+Class 8: byte
+Class 9: short
+Class 10: int
+Class 11: long
+Class 12: void
+Class 13: [Ljava/lang/Object;
+Class 14: java.lang.NoSuchMethodError
+Class 15: java.lang.StackOverflowError
+Class 16: java.lang.NullPointerException
+Class 17: [Z
+Class 18: [C
+Class 19: [F
+Class 20: [D
+Class 21: [B
+Class 22: [S
+Class 23: [I
+Class 24: [J
+Class 25: [V
+Class 26: java.lang.ClassCastException
+Class 27: java.lang.ArithmeticException
+Class 28: java.lang.ArrayIndexOutOfBoundsException
+Class 29: java.lang.IllegalArgumentException
+Class 30: java.lang.InterruptedException
+Class 31: java.lang.IllegalStateException
+Class 32: java.lang.IllegalMonitorStateException
+Class 33: java.lang.ThreadDeath
+Class 34: java.lang.ArrayStoreException
+Class 35: java.lang.NegativeArraySizeException
+Class 36: java.lang.Class
+Class 37: java.lang.String
+Class 38: java.lang.Cloneable
+Class 39: java.lang.Thread
+Class 40: lejos.nxt.comm.Bluetooth$BTThread
+Class 41: BTReader
+Class 42: Primary
+Class 43: lejos.nxt.VM
+Class 44: java.lang.System
+Class 45: java.lang.StringBuilder
+Class 46: java.lang.Integer
+Class 47: java.lang.RuntimeException
+Class 48: java.lang.Exception
+Class 49: java.lang.IndexOutOfBoundsException
+Class 50: java.lang.StringIndexOutOfBoundsException
+Class 51: java.lang.StringUtils
+Class 52: java.lang.Runnable
+Class 53: java.util.ArrayList
+Class 54: lejos.nxt.Button
+Class 55: lejos.nxt.LCD
+Class 56: PilotWrapper
+Class 57: java.io.PrintStream
+Class 58: lejos.nxt.LCDOutputStream
+Class 59: java.lang.Number
+Class 60: java.lang.NumberFormatException
+Class 61: java.lang.Character
+Class 62: java.util.AbstractList
+Class 63: lejos.nxt.comm.Bluetooth
+Class 64: lejos.nxt.comm.BTConnection
+Class 65: java.io.DataInputStream
+Class 66: lejos.util.Delay
+Class 67: lejos.nxt.Sound
+Class 68: lejos.nxt.SystemSettings
+Class 69: [Llejos/nxt/Button;
+Class 70: java.io.OutputStream
+Class 71: java.io.IOException
+Class 72: java.util.AbstractCollection
+Class 73: lejos.nxt.comm.NXTCommDevice
+Class 74: [Llejos/nxt/comm/BTConnection;
+Class 75: lejos.nxt.comm.NXTConnection
+Class 76: java.io.FilterInputStream
+Class 77: java.io.InputStream
+Class 78: java.io.EOFException
+Class 79: lejos.nxt.Flash
+Class 80: [Ljava/lang/String;
+Class 81: lejos.nxt.comm.NXTInputStream
+Class 82: lejos.nxt.comm.NXTOutputStream
+Class 83: java.io.DataOutputStream
+Class 84: lejos.nxt.FlashError
+Class 85: lejos.nxt.NXT
+Class 86: java.io.FilterOutputStream
+Method 0: Class: java.lang.Object Signature: <init>()V PC 5104 Signature id 2
+Method 1: Class: java.lang.Object Signature: notifyAll()V Native id 5
+Method 2: Class: java.lang.Object Signature: toString()Ljava/lang/String; PC 5105 Signature id 117
+Method 3: Class: java.lang.Object Signature: wait()V Native id 6
+Method 4: Class: java.lang.Object Signature: wait(J)V Native id 7
+Method 5: Class: java.lang.Throwable Signature: <init>()V PC 5133 Signature id 2
+Method 6: Class: java.lang.Throwable Signature: <init>(Ljava/lang/String;)V PC 5138 Signature id 118
+Method 7: Class: java.lang.Throwable Signature: getMessage()Ljava/lang/String; PC 5148 Signature id 29
+Method 8: Class: java.lang.Throwable Signature: toString()Ljava/lang/String; PC 5153 Signature id 117
+Method 9: Class: java.lang.Error Signature: <init>(Ljava/lang/String;)V PC 5158 Signature id 118
+Method 10: Class: java.lang.IllegalArgumentException Signature: <init>(Ljava/lang/String;)V PC 5164 Signature id 118
+Method 11: Class: java.lang.Class Signature: isInterface()Z PC 5170 Signature id 124
+Method 12: Class: java.lang.Class Signature: toString()Ljava/lang/String; PC 5187 Signature id 117
+Method 13: Class: java.lang.String Signature: <init>(I)V PC 5233 Signature id 119
+Method 14: Class: java.lang.String Signature: <init>([CII)V PC 5250 Signature id 125
+Method 15: Class: java.lang.String Signature: <init>([C)V PC 5278 Signature id 126
+Method 16: Class: java.lang.String Signature: length()I PC 5287 Signature id 131
+Method 17: Class: java.lang.String Signature: charAt(I)C PC 5293 Signature id 132
+Method 18: Class: java.lang.String Signature: valueOf(Ljava/lang/Object;)Ljava/lang/String; PC 5318 Signature id 141
+Method 19: Class: java.lang.String Signature: toString()Ljava/lang/String; PC 5332 Signature id 117
+Method 20: Class: java.lang.String Signature: equals(Ljava/lang/Object;)Z PC 5334 Signature id 114
+Method 21: Class: java.lang.String Signature: valueOf(II)Ljava/lang/String; PC 5406 Signature id 150
+Method 22: Class: java.lang.Thread Signature: init(Ljava/lang/String;Ljava/lang/Runnable;)V PC 5434 Signature id 153
+Method 23: Class: java.lang.Thread Signature: <init>()V PC 5477 Signature id 2
+Method 24: Class: java.lang.Thread Signature: run()V PC 5489 Signature id 1
+Method 25: Class: java.lang.Thread Signature: start()V Native id 9
+Method 26: Class: java.lang.Thread Signature: yield()V Native id 10
+Method 27: Class: java.lang.Thread Signature: sleep(J)V Native id 11
+Method 28: Class: java.lang.Thread Signature: currentThread()Ljava/lang/Thread; Native id 12
+Method 29: Class: java.lang.Thread Signature: getPriority()I Native id 13
+Method 30: Class: java.lang.Thread Signature: setPriority(I)V Native id 14
+Method 31: Class: java.lang.Thread Signature: interrupt()V Native id 15
+Method 32: Class: java.lang.Thread Signature: isDaemon()Z Native id 19
+Method 33: Class: java.lang.Thread Signature: setDaemon(Z)V Native id 18
+Method 34: Class: lejos.nxt.comm.Bluetooth$BTThread Signature: <init>()V PC 5509 Signature id 2
+Method 35: Class: lejos.nxt.comm.Bluetooth$BTThread Signature: sendCommand()V PC 5617 Signature id 428
+Method 36: Class: lejos.nxt.comm.Bluetooth$BTThread Signature: recvReply()I PC 5701 Signature id 429
+Method 37: Class: lejos.nxt.comm.Bluetooth$BTThread Signature: reset()V PC 5866 Signature id 345
+Method 38: Class: lejos.nxt.comm.Bluetooth$BTThread Signature: processReply()V PC 6102 Signature id 430
+Method 39: Class: lejos.nxt.comm.Bluetooth$BTThread Signature: processCommands()V PC 6403 Signature id 431
+Method 40: Class: lejos.nxt.comm.Bluetooth$BTThread Signature: selectChan()I PC 6471 Signature id 432
+Method 41: Class: lejos.nxt.comm.Bluetooth$BTThread Signature: processStreams()V PC 6525 Signature id 433
+Method 42: Class: lejos.nxt.comm.Bluetooth$BTThread Signature: waitSwitch(IZ)I PC 6682 Signature id 434
+Method 43: Class: lejos.nxt.comm.Bluetooth$BTThread Signature: switchToStream(I)Z PC 6749 Signature id 435
+Method 44: Class: lejos.nxt.comm.Bluetooth$BTThread Signature: switchToCmd()V PC 6820 Signature id 436
+Method 45: Class: lejos.nxt.comm.Bluetooth$BTThread Signature: bc4Mode()I PC 6937 Signature id 437
+Method 46: Class: lejos.nxt.comm.Bluetooth$BTThread Signature: waitInit()V PC 6952 Signature id 438
+Method 47: Class: lejos.nxt.comm.Bluetooth$BTThread Signature: run()V PC 6987 Signature id 1
+Method 48: Class: BTReader Signature: <init>()V PC 7005 Signature id 2
+Method 49: Class: BTReader Signature: run()V PC 7010 Signature id 1
+Method 50: Class: Primary Signature: main([Ljava/lang/String;)V PC 7095 Signature id 0
+Method 51: Class: lejos.nxt.VM Signature: memPeek(III)I Native id 104
+Method 52: Class: lejos.nxt.VM Signature: getObjectAddress(Ljava/lang/Object;)I Native id 106
+Method 53: Class: lejos.nxt.VM Signature: memPeekByte(II)I PC 7149 Signature id 157
+Method 54: Class: lejos.nxt.VM Signature: memPeekInt(II)I PC 7161 Signature id 159
+Method 55: Class: lejos.nxt.VM Signature: getClassNumber(Ljava/lang/Class;)I PC 7169 Signature id 162
+Method 56: Class: lejos.nxt.VM Signature: <clinit>()V PC 7186 Signature id 3
+Method 57: Class: java.lang.System Signature: arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V Native id 24
+Method 58: Class: java.lang.System Signature: exit(I)V Native id 23
+Method 59: Class: java.lang.System Signature: currentTimeMillis()J Native id 22
+Method 60: Class: java.lang.System Signature: identityHashCode(Ljava/lang/Object;)I PC 7205 Signature id 180
+Method 61: Class: java.lang.System Signature: getDataAddress(Ljava/lang/Object;)I Native id 8
+Method 62: Class: java.lang.System Signature: <clinit>()V PC 7210 Signature id 3
+Method 63: Class: java.lang.StringBuilder Signature: ensureCapacity(I)V PC 7245 Signature id 181
+Method 64: Class: java.lang.StringBuilder Signature: <init>()V PC 7304 Signature id 2
+Method 65: Class: java.lang.StringBuilder Signature: append(Ljava/lang/String;)Ljava/lang/StringBuilder; PC 7322 Signature id 182
+Method 66: Class: java.lang.StringBuilder Signature: append(I)Ljava/lang/StringBuilder; PC 7328 Signature id 186
+Method 67: Class: java.lang.StringBuilder Signature: appendInternal(Ljava/lang/String;)Ljava/lang/StringBuilder; PC 7366 Signature id 187
+Method 68: Class: java.lang.StringBuilder Signature: toString()Ljava/lang/String; PC 7417 Signature id 117
+Method 69: Class: java.lang.Integer Signature: <init>(I)V PC 7434 Signature id 119
+Method 70: Class: java.lang.Integer Signature: parseInt(Ljava/lang/String;)I PC 7444 Signature id 190
+Method 71: Class: java.lang.Integer Signature: parseInt(Ljava/lang/String;I)I PC 7451 Signature id 191
+Method 72: Class: java.lang.Integer Signature: toHexString(I)Ljava/lang/String; PC 7606 Signature id 193
+Method 73: Class: java.lang.Integer Signature: toUnsignedString(IIII)Ljava/lang/String; PC 7616 Signature id 194
+Method 74: Class: java.lang.Integer Signature: toString()Ljava/lang/String; PC 7664 Signature id 117
+Method 75: Class: java.lang.Integer Signature: toString(I)Ljava/lang/String; PC 7672 Signature id 195
+Method 76: Class: java.lang.Integer Signature: valueOf(I)Ljava/lang/Integer; PC 7679 Signature id 196
+Method 77: Class: java.lang.Integer Signature: <clinit>()V PC 7688 Signature id 3
+Method 78: Class: java.lang.RuntimeException Signature: <init>(Ljava/lang/String;)V PC 7693 Signature id 118
+Method 79: Class: java.lang.Exception Signature: <init>()V PC 7699 Signature id 2
+Method 80: Class: java.lang.Exception Signature: <init>(Ljava/lang/String;)V PC 7704 Signature id 118
+Method 81: Class: java.lang.IndexOutOfBoundsException Signature: <init>(Ljava/lang/String;)V PC 7710 Signature id 118
+Method 82: Class: java.lang.StringIndexOutOfBoundsException Signature: <init>(I)V PC 7716 Signature id 119
+Method 83: Class: java.lang.StringUtils Signature: parseDigit(CI)I PC 7740 Signature id 202
+Method 84: Class: java.lang.StringUtils Signature: throwNumberFormat(Ljava/lang/String;I)V PC 7762 Signature id 203
+Method 85: Class: java.lang.StringUtils Signature: getIntChars([CIII)I PC 7798 Signature id 205
+Method 86: Class: java.lang.StringUtils Signature: exactStringLength(II)I PC 7850 Signature id 207
+Method 87: Class: java.util.ArrayList Signature: <init>()V PC 7873 Signature id 2
+Method 88: Class: java.util.ArrayList Signature: add(Ljava/lang/Object;)Z PC 7892 Signature id 221
+Method 89: Class: java.util.ArrayList Signature: ensureCapacity(I)V PC 7921 Signature id 181
+Method 90: Class: lejos.nxt.Button Signature: <init>(I)V PC 7991 Signature id 119
+Method 91: Class: lejos.nxt.Button Signature: isPressed()Z PC 8001 Signature id 241
+Method 92: Class: lejos.nxt.Button Signature: getButtons()I Native id 47
+Method 93: Class: lejos.nxt.Button Signature: readButtons()I PC 8018 Signature id 243
+Method 94: Class: lejos.nxt.Button Signature: loadSettings()V PC 8062 Signature id 245
+Method 95: Class: lejos.nxt.Button Signature: <clinit>()V PC 8136 Signature id 3
+Method 96: Class: lejos.nxt.LCD Signature: bitBlt([BIIIIIIIII)V PC 8227 Signature id 246
+Method 97: Class: lejos.nxt.LCD Signature: bitBlt(IIIII)V PC 8254 Signature id 247
+Method 98: Class: lejos.nxt.LCD Signature: drawChar(CIIZ)V PC 8280 Signature id 248
+Method 99: Class: lejos.nxt.LCD Signature: drawString(Ljava/lang/String;II)V Native id 36
+Method 100: Class: lejos.nxt.LCD Signature: refresh()V Native id 39
+Method 101: Class: lejos.nxt.LCD Signature: getDisplay()[B Native id 42
+Method 102: Class: lejos.nxt.LCD Signature: getSystemFont()[B Native id 45
+Method 103: Class: lejos.nxt.LCD Signature: bitBlt([BIIII[BIIIIIII)V Native id 44
+Method 104: Class: lejos.nxt.LCD Signature: scroll()V PC 8329 Signature id 250
+Method 105: Class: lejos.nxt.LCD Signature: <clinit>()V PC 8362 Signature id 3
+Method 106: Class: java.io.PrintStream Signature: <init>(Ljava/io/OutputStream;)V PC 8375 Signature id 273
+Method 107: Class: java.io.PrintStream Signature: write(I)V PC 8385 Signature id 274
+Method 108: Class: java.io.PrintStream Signature: print(Ljava/lang/String;)V PC 8398 Signature id 275
+Method 109: Class: java.io.PrintStream Signature: flush()V PC 8424 Signature id 276
+Method 110: Class: java.io.PrintStream Signature: println(Ljava/lang/String;)V PC 8436 Signature id 277
+Method 111: Class: java.io.PrintStream Signature: println(Ljava/lang/Object;)V PC 8452 Signature id 278
+Method 112: Class: lejos.nxt.LCDOutputStream Signature: <init>()V PC 8461 Signature id 2
+Method 113: Class: lejos.nxt.LCDOutputStream Signature: write(I)V PC 8471 Signature id 274
+Method 114: Class: java.lang.Number Signature: <init>()V PC 8530 Signature id 2
+Method 115: Class: java.lang.NumberFormatException Signature: <init>(Ljava/lang/String;)V PC 8535 Signature id 118
+Method 116: Class: java.lang.Character Signature: digit(II)I PC 8541 Signature id 198
+Method 117: Class: java.lang.Character Signature: forDigit(II)C PC 8619 Signature id 287
+Method 118: Class: java.lang.Character Signature: <clinit>()V PC 8666 Signature id 3
+Method 119: Class: java.util.AbstractList Signature: <init>()V PC 8671 Signature id 2
+Method 120: Class: lejos.nxt.comm.Bluetooth Signature: btWrite([BII)I Native id 64
+Method 121: Class: lejos.nxt.comm.Bluetooth Signature: btRead([BII)I Native id 65
+Method 122: Class: lejos.nxt.comm.Bluetooth Signature: btPending()I Native id 66
+Method 123: Class: lejos.nxt.comm.Bluetooth Signature: btSetArmCmdMode(I)V Native id 61
+Method 124: Class: lejos.nxt.comm.Bluetooth Signature: btGetBC4CmdMode()I Native id 60
+Method 125: Class: lejos.nxt.comm.Bluetooth Signature: btSetResetLow()V Native id 62
+Method 126: Class: lejos.nxt.comm.Bluetooth Signature: btSetResetHigh()V Native id 63
+Method 127: Class: lejos.nxt.comm.Bluetooth Signature: btEnable()V Native id 97
+Method 128: Class: lejos.nxt.comm.Bluetooth Signature: cmdInit(IIII)V PC 8676 Signature id 316
+Method 129: Class: lejos.nxt.comm.Bluetooth Signature: startTimeout(I)V PC 8705 Signature id 317
+Method 130: Class: lejos.nxt.comm.Bluetooth Signature: checkTimeout()Z PC 8715 Signature id 318
+Method 131: Class: lejos.nxt.comm.Bluetooth Signature: cancelTimeout()V PC 8737 Signature id 319
+Method 132: Class: lejos.nxt.comm.Bluetooth Signature: waitState(I)I PC 8742 Signature id 320
+Method 133: Class: lejos.nxt.comm.Bluetooth Signature: cmdStart()V PC 8813 Signature id 321
+Method 134: Class: lejos.nxt.comm.Bluetooth Signature: cmdComplete()V PC 8834 Signature id 322
+Method 135: Class: lejos.nxt.comm.Bluetooth Signature: cmdWait(IIII)I PC 8864 Signature id 323
+Method 136: Class: lejos.nxt.comm.Bluetooth Signature: setPin([B)V PC 8951 Signature id 324
+Method 137: Class: lejos.nxt.comm.Bluetooth Signature: getPin()[B PC 8956 Signature id 325
+Method 138: Class: lejos.nxt.comm.Bluetooth Signature: openPort()[B PC 8960 Signature id 327
+Method 139: Class: lejos.nxt.comm.Bluetooth Signature: closePort()[B PC 9020 Signature id 328
+Method 140: Class: lejos.nxt.comm.Bluetooth Signature: waitForConnection(II[B)Llejos/nxt/comm/BTConnection; PC 9081 Signature id 329
+Method 141: Class: lejos.nxt.comm.Bluetooth Signature: waitForConnection()Llejos/nxt/comm/BTConnection; PC 9377 Signature id 330
+Method 142: Class: lejos.nxt.comm.Bluetooth Signature: getFriendlyName()Ljava/lang/String; PC 9384 Signature id 337
+Method 143: Class: lejos.nxt.comm.Bluetooth Signature: getLocalAddress()Ljava/lang/String; PC 9462 Signature id 338
+Method 144: Class: lejos.nxt.comm.Bluetooth Signature: setOperatingMode(B)I PC 9540 Signature id 344
+Method 145: Class: lejos.nxt.comm.Bluetooth Signature: reset()V PC 9586 Signature id 345
+Method 146: Class: lejos.nxt.comm.Bluetooth Signature: checkDevice()I PC 9618 Signature id 346
+Method 147: Class: lejos.nxt.comm.Bluetooth Signature: setPower(Z)V PC 9668 Signature id 347
+Method 148: Class: lejos.nxt.comm.Bluetooth Signature: loadSettings()V PC 9785 Signature id 245
+Method 149: Class: lejos.nxt.comm.Bluetooth Signature: access$000()V PC 9832 Signature id 349
+Method 150: Class: lejos.nxt.comm.Bluetooth Signature: access$100()Z PC 9836 Signature id 350
+Method 151: Class: lejos.nxt.comm.Bluetooth Signature: access$200(I)V PC 9840 Signature id 351
+Method 152: Class: lejos.nxt.comm.Bluetooth Signature: access$300(IIII)V PC 9845 Signature id 352
+Method 153: Class: lejos.nxt.comm.Bluetooth Signature: access$400()[B PC 9853 Signature id 353
+Method 154: Class: lejos.nxt.comm.Bluetooth Signature: <clinit>()V PC 9857 Signature id 3
+Method 155: Class: lejos.nxt.comm.BTConnection Signature: <init>(I)V PC 9920 Signature id 119
+Method 156: Class: lejos.nxt.comm.BTConnection Signature: reset()V PC 9952 Signature id 345
+Method 157: Class: lejos.nxt.comm.BTConnection Signature: bind(BLjava/lang/String;I)V PC 9972 Signature id 354
+Method 158: Class: lejos.nxt.comm.BTConnection Signature: send()V PC 10055 Signature id 357
+Method 159: Class: lejos.nxt.comm.BTConnection Signature: flushBuffer(Z)I PC 10124 Signature id 358
+Method 160: Class: lejos.nxt.comm.BTConnection Signature: recv()V PC 10159 Signature id 359
+Method 161: Class: lejos.nxt.comm.BTConnection Signature: fillBuffer(Z)I PC 10266 Signature id 360
+Method 162: Class: lejos.nxt.comm.BTConnection Signature: needsAttention()Z PC 10295 Signature id 361
+Method 163: Class: lejos.nxt.comm.BTConnection Signature: pendingInput()Z PC 10346 Signature id 362
+Method 164: Class: lejos.nxt.comm.BTConnection Signature: flushInput()V PC 10360 Signature id 363
+Method 165: Class: java.io.DataInputStream Signature: <init>(Ljava/io/InputStream;)V PC 10491 Signature id 364
+Method 166: Class: java.io.DataInputStream Signature: readByte0()I PC 10497 Signature id 365
+Method 167: Class: java.io.DataInputStream Signature: readInt()I PC 10523 Signature id 368
+Method 168: Class: lejos.util.Delay Signature: msDelay(J)V PC 10560 Signature id 372
+Method 169: Class: lejos.nxt.Sound Signature: playFreq(III)V Native id 55
+Method 170: Class: lejos.nxt.Sound Signature: playTone(III)V PC 10612 Signature id 380
+Method 171: Class: lejos.nxt.Sound Signature: loadSettings()V PC 10638 Signature id 245
+Method 172: Class: lejos.nxt.Sound Signature: <clinit>()V PC 10649 Signature id 3
+Method 173: Class: lejos.nxt.SystemSettings Signature: getSlot(Ljava/lang/String;)I PC 10758 Signature id 385
+Method 174: Class: lejos.nxt.SystemSettings Signature: setSlot(ILjava/lang/String;)V PC 10790 Signature id 386
+Method 175: Class: lejos.nxt.SystemSettings Signature: getValue(I)Ljava/lang/String; PC 10848 Signature id 387
+Method 176: Class: lejos.nxt.SystemSettings Signature: getStringSetting(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String; PC 10920 Signature id 388
+Method 177: Class: lejos.nxt.SystemSettings Signature: getIntSetting(Ljava/lang/String;I)I PC 10947 Signature id 389
+Method 178: Class: lejos.nxt.SystemSettings Signature: setSetting(Ljava/lang/String;Ljava/lang/String;)V PC 10967 Signature id 390
+Method 179: Class: lejos.nxt.SystemSettings Signature: <clinit>()V PC 10989 Signature id 3
+Method 180: Class: java.io.OutputStream Signature: <init>()V PC 11101 Signature id 2
+Method 181: Class: java.io.OutputStream Signature: write(I)V PC 0 Signature id 274
+Method 182: Class: java.io.OutputStream Signature: flush()V PC 11106 Signature id 276
+Method 183: Class: java.io.IOException Signature: <init>()V PC 11107 Signature id 2
+Method 184: Class: java.util.AbstractCollection Signature: <init>()V PC 11112 Signature id 2
+Method 185: Class: lejos.nxt.comm.NXTCommDevice Signature: addressToString([B)Ljava/lang/String; PC 11117 Signature id 425
+Method 186: Class: lejos.nxt.comm.NXTCommDevice Signature: nameToString([B)Ljava/lang/String; PC 11201 Signature id 426
+Method 187: Class: lejos.nxt.comm.NXTCommDevice Signature: loadSettings()V PC 11266 Signature id 245
+Method 188: Class: lejos.nxt.comm.NXTCommDevice Signature: <clinit>()V PC 11287 Signature id 3
+Method 189: Class: lejos.nxt.comm.NXTConnection Signature: <init>()V PC 11398 Signature id 2
+Method 190: Class: lejos.nxt.comm.NXTConnection Signature: flushBuffer(Z)I PC 0 Signature id 358
+Method 191: Class: lejos.nxt.comm.NXTConnection Signature: write([BIZ)I PC 11408 Signature id 457
+Method 192: Class: lejos.nxt.comm.NXTConnection Signature: fillBuffer(Z)I PC 0 Signature id 360
+Method 193: Class: lejos.nxt.comm.NXTConnection Signature: read([BIZ)I PC 11642 Signature id 458
+Method 194: Class: lejos.nxt.comm.NXTConnection Signature: setHeader(I)V PC 12118 Signature id 461
+Method 195: Class: lejos.nxt.comm.NXTConnection Signature: setIOMode(I)V PC 12138 Signature id 462
+Method 196: Class: lejos.nxt.comm.NXTConnection Signature: read([BI)I PC 12161 Signature id 463
+Method 197: Class: lejos.nxt.comm.NXTConnection Signature: write([BI)I PC 12169 Signature id 464
+Method 198: Class: lejos.nxt.comm.NXTConnection Signature: openInputStream()Ljava/io/InputStream; PC 12177 Signature id 465
+Method 199: Class: lejos.nxt.comm.NXTConnection Signature: openOutputStream()Ljava/io/OutputStream; PC 12214 Signature id 466
+Method 200: Class: lejos.nxt.comm.NXTConnection Signature: openDataInputStream()Ljava/io/DataInputStream; PC 12251 Signature id 467
+Method 201: Class: lejos.nxt.comm.NXTConnection Signature: openDataOutputStream()Ljava/io/DataOutputStream; PC 12263 Signature id 468
+Method 202: Class: lejos.nxt.comm.NXTConnection Signature: disconnected()Z PC 12275 Signature id 469
+Method 203: Class: lejos.nxt.comm.NXTConnection Signature: freeConnection()V PC 12305 Signature id 470
+Method 204: Class: java.io.FilterInputStream Signature: <init>(Ljava/io/InputStream;)V PC 12306 Signature id 364
+Method 205: Class: java.io.FilterInputStream Signature: read()I PC 12316 Signature id 473
+Method 206: Class: java.io.InputStream Signature: <init>()V PC 12324 Signature id 2
+Method 207: Class: java.io.InputStream Signature: read()I PC 0 Signature id 473
+Method 208: Class: java.io.EOFException Signature: <init>()V PC 12329 Signature id 2
+Method 209: Class: lejos.nxt.Flash Signature: flashReadPage([BI)I Native id 71
+Method 210: Class: lejos.nxt.Flash Signature: flashWritePage([BI)I Native id 70
+Method 211: Class: lejos.nxt.Flash Signature: readPage([BI)V PC 12334 Signature id 494
+Method 212: Class: lejos.nxt.Flash Signature: writePage([BI)V PC 12353 Signature id 495
+Method 213: Class: lejos.nxt.Flash Signature: <clinit>()V PC 12440 Signature id 3
+Method 214: Class: lejos.nxt.comm.NXTInputStream Signature: <init>(Llejos/nxt/comm/NXTConnection;I)V PC 12453 Signature id 500
+Method 215: Class: lejos.nxt.comm.NXTInputStream Signature: read()I PC 12485 Signature id 473
+Method 216: Class: lejos.nxt.comm.NXTOutputStream Signature: <init>(Llejos/nxt/comm/NXTConnection;I)V PC 12579 Signature id 500
+Method 217: Class: lejos.nxt.comm.NXTOutputStream Signature: write(I)V PC 12606 Signature id 274
+Method 218: Class: lejos.nxt.comm.NXTOutputStream Signature: flush()V PC 12644 Signature id 276
+Method 219: Class: java.io.DataOutputStream Signature: <init>(Ljava/io/OutputStream;)V PC 12683 Signature id 273
+Method 220: Class: java.io.DataOutputStream Signature: incCount(I)V PC 12689 Signature id 501
+Method 221: Class: java.io.DataOutputStream Signature: write(I)V PC 12709 Signature id 274
+Method 222: Class: lejos.nxt.FlashError Signature: <init>(Ljava/lang/String;)V PC 12723 Signature id 118
+Method 223: Class: lejos.nxt.NXT Signature: getUserPages()I Native id 95
+Method 224: Class: java.io.FilterOutputStream Signature: <init>(Ljava/io/OutputStream;)V PC 12729 Signature id 273
+Method 225: Class: java.io.FilterOutputStream Signature: flush()V PC 12739 Signature id 276
+Method 226: Class: java.io.FilterOutputStream Signature: write(I)V PC 12747 Signature id 274
+Master record    : 20 bytes.
+Class records    : 87 (1044 bytes).
+Field records    : 69 (72 bytes).
+Static fields    : 50 (100 bytes).
+Static state     : 50 (184 bytes).
+Constant records : 41 (164 bytes).
+Constant values  : 41 (484 bytes).
+Method records   : 227 (2724 bytes).
+Exception records: 61 (488 bytes).
+Interface maps   : 2 (4 bytes).
+Code             : 187 (7652 bytes).
+Total            : 12756 bytes.
+Run time options : <NONE>
+Constant loads   : 41N 9O 0W 41S
+Static load/store: 26N 217O
+Field  load/store: 40N 261O
+leJOS NXJ> Uploading...
+BlueCove version 2.1.0 on bluez
+leJOS NXJ> Connected to ELIMIN8
+leJOS NXJ> Upload successful in 4381 milliseconds
+BlueCove stack shutdown completed

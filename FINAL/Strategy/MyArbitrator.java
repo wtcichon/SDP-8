@@ -1,0 +1,176 @@
+package Strategy;
+import Main.Launcher;
+import Shared.ObjectItem;
+import Shared.*;
+/**
+ * ADAPTED FROM LEJOS SOURCE CODE
+ * Arbitrator controls which behaviour should become active in
+ * a behaviour control system. Make sure to call start() after the 
+ * Arbitrator is instantiated.<br>
+ *  This class has three major responsibilities: <br> 
+ * 1. Determine the highest priority  behaviour that returns <b> true </b> to takeControl()<br>   
+ * 2. Suppress the active behaviour if its priority is less than highest
+ * priority. <br>   
+ * 3. When the action() method exits, it calls action() on the behaviour of highest priority.
+ * This behaviour becomes active.
+ * Chances since release 0.7:
+ * <br> 1. It assumes that a behaviour is no longer active when action() exits.
+ * <br> 2. Therefore it will only call suppress() on the behaviour whose action() method is running.
+ * <br> 3. It can make consecutives calls of action() on the same behaviour.
+ * <br> 4. Requirements for a behaviour:
+ * <br>    When suppress() is called, terminate  action() immediately.
+ * @see behaviour
+ * @author Roger Glassey
+ */
+public class MyArbitrator
+{
+public static ObjectItem[] objects;
+  private final int NONE = -1;
+  public static Behaviour[] _behaviour;
+  // highest priority behaviour that wants control ; set by start() usec by monitor
+  private int _highestPriority = NONE;
+  private int _active = NONE; //  active behaviour; set by montior, used by start();
+  private boolean _returnWhenInactive;
+  /**
+   * Monitor is an inner class.  It polls the behaviour array to find the behaviour of hightst
+   * priority.  If higher than the active behaviour, it calls active.suppress()
+   */
+  private Monitor monitor;
+
+ private static int visCall = 0;
+  /**
+   * Allocates an Arbitrator object and initializes it with an array of
+   * behaviour objects. The index of a behaviour in this array is its priority level, so 
+   * the behaviour of the largest index has the highest the priority level. 
+   * The behaviours in an Arbitrator can not
+   * be changed once the arbitrator is initialized.<BR>
+   * <B>NOTE:</B> Once the Arbitrator is initialized, the method start() must be
+   * called to begin the arbitration.
+   * @param behaviourList an array of behaviour objects.
+   * @param returnWhenInactive if <B>true</B>, the <B>start()</B> method returns when no behaviour is active.
+   */
+  public MyArbitrator(Behaviour[] behaviourList, boolean returnWhenInactive)
+  {
+    _behaviour = behaviourList;
+    _returnWhenInactive = returnWhenInactive;
+    monitor = new Monitor();
+    monitor.setDaemon(true);
+  }
+
+  /* method used to kill nested arbiter
+   * 
+   */
+  public void killArbitrator()
+  {
+	  _returnWhenInactive = true; //make arbiter shut when it's inactive
+	  _behaviour[_active].suppress(); //kill current behaviour
+  }
+  
+  /**
+   * Same as Arbitrator(behaviourList, false) Arbitrator start() never exits
+   * @param behaviourList An array of behaviour objects.
+   */
+  public MyArbitrator(Behaviour[] behaviourList)
+  {
+    this(behaviourList, false);
+  }
+
+  /**
+   * This method starts the arbitration of behaviours and runs an endless loop.  <BR>
+   * Note: Arbitrator does not run in a separate thread. The start()
+   * method will never return unless <br>1.  no action() method is running  and
+   * <br>2. no behaviour  takeControl()
+   * returns <B> true </B>  and  <br> 3. the <i>returnWhenInacative </i> flag is true,
+   */
+  public void start()
+  {
+//	  int i =0;
+    monitor.start();
+
+    while (_highestPriority == NONE)
+    {
+     	Thread.yield();//wait for some behaviour to take contro     
+    }
+    while (true)
+    {
+      synchronized (monitor)
+      {
+        if (_highestPriority != NONE)
+        {
+          _active = _highestPriority;
+
+        } else if (_returnWhenInactive)
+        {// no behaviour wants to run
+	  monitor.more = false;//9 shut down monitor thread
+          return;
+        }
+      }
+	
+	// monotor released before action is called
+	if (_active != NONE)  //_highestPrioirty could be NONE
+      {
+	 visCall=0;
+       _behaviour[_active].action();
+        _active = NONE;  // no active behaviour at the moment
+      }
+      Thread.yield();
+     // i++; 	
+     // System.out.println("i " + i);
+     // if (i==10) return;
+    }
+  }
+
+  /**
+   * Finds the highest priority behaviour that returns <B>true </B> to takeControl();
+   * If this priority is higher than the active behaviour, it calls active.suppress().
+   * If there is no active behaviour, calls suppress() on the most recently acrive behaviour.
+   */
+  private class Monitor extends Thread
+  {
+	
+    boolean more = true;
+    int maxPriority = MyArbitrator._behaviour.length - 1;
+    int monitorr = 0, monitorw = 0;
+    public void run()
+    {
+
+     while (more)
+      {
+    	
+	//System.out.println("call V");
+    	 MyArbitrator.objects = Launcher.findObjects();
+//	System.out.println(" Arbit ball "+ MyArbitrator.objects[2].getCentre().x+","+MyArbitrator.objects[2].getCentre().y);
+
+	//System.out.println("ball " + MyArbitrator.objects[2].getCentre().x);
+	visCall++;
+   //	System.out.println("Vision Called" + visCall); 
+
+     //	System.out.println(" mon while" + monitorw); 
+    	//  ObjectItem[] objects = Launcher.findObjects();
+    	//  System.out.println("call V");
+        //FIND HIGHEST PRIORITY behaviour THAT WANTS CONTROL
+      synchronized (this)
+        {
+           _highestPriority = NONE;
+          for (int i = maxPriority; i >= 0; i--)
+          {
+            if (MyArbitrator._behaviour[i].takeControl(MyArbitrator.objects))
+            {
+              
+              _highestPriority = i;
+              break;
+            }
+          }
+
+          int active = _active;// local copy: avoid out of bounds error in 134
+          if (active != NONE && _highestPriority > active)
+          {
+            MyArbitrator._behaviour[active].suppress();
+          }
+        }// end synchronize block - main thread can run now
+        Thread.yield();
+      }
+    }
+  }
+}
+  
